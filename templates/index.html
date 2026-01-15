@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Amazon Customer Churn Prediction</title>
+
+    <!-- Flask CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="box">
+    <h2>Amazon Customer Churn Prediction</h2>
+
+    <form method="POST">
+        <input type="number" name="CreditScore" placeholder="Credit Score" required>
+        <input type="number" name="Age" placeholder="Age" required>
+        <input type="number" name="Tenure" placeholder="Tenure" required>
+        <input type="number" name="Balance" placeholder="Balance" required>
+        <input type="number" name="NumOfProducts" placeholder="Number of Products" required>
+
+        <select name="HasCrCard">
+            <option value="1">Has Credit Card</option>
+            <option value="0">No Credit Card</option>
+        </select>
+
+        <select name="IsActiveMember">
+            <option value="1">Active Member</option>
+            <option value="0">Inactive Member</option>
+        </select>
+
+        <input type="number" name="EstimatedSalary" placeholder="Estimated Salary" required>
+
+        <select name="Geography">
+            <option value="Germany">Germany</option>
+            <option value="Spain">Spain</option>
+            <option value="France">France</option>
+        </select>
+
+        <select name="Gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+
+        <button type="submit">Predict Churn</button>
+    </form>
+
+    {% if prediction is not none %}
+    <div class="result">
+        <p><b>Prediction:</b> {{ prediction }}</p>
+        <p><b>Churn Probability:</b> {{ probability }}</p>
+        <p><b>Risk Level:</b> {{ risk }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
